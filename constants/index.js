@@ -12,7 +12,7 @@ export const sidebarLinks = [
   {
     imgURL: "/assets/activity.svg",
     route: "/activity",
-    label: "Activity",
+    label: "Notification",
   },
   {
     imgURL: "/assets/create.svg",
