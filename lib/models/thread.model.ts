@@ -18,6 +18,9 @@ const threadSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  reaction_count:{
+    type: Int32,
+  },
   parentId: {
     type: String,
   },
