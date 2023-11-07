@@ -26,15 +26,7 @@ interface Props {
     };
   }[];
   isComment?: boolean;
-
-  reactions: {
-    heart: number;
-    reply: number;
-    repost: number;
-  };
-  onReact: (reactionType: string) => void;
 }
-
 
 function ThreadCard({
   id,
@@ -46,30 +38,7 @@ function ThreadCard({
   createdAt,
   comments,
   isComment,
-}: Props) 
-
-
-
-
-
-
-
-  {
-    const [userReactions, setUserReactions] = useState({
-      heart: false,
-      reply: false,
-      repost: false,
-    });
-  
-    const handleReaction = (reactionType: string) => {
-      if (!userReactions[reactionType]) {
-        // If the user hasn't reacted, update the UI and send the reaction to the server.
-        setUserReactions({ ...userReactions, [reactionType]: true });
-        onReact(reactionType);
-      }
-    };
-
-
+}: Props) {
   return (
     <article className={`flex w-full flex-col rounded-xl  ${isComment ? "px-0 xs:px-7 py-2" : "bg-slate-100 p-7"}`}>
       <div className="flex items-start justify-between">
@@ -107,8 +76,7 @@ function ThreadCard({
                   alt="heart"
                   width={24}
                   height={24}
-                  className={`cursor-pointer object-contain ${userReactions.heart ? 'text-red-500' : ''}`}
-                  onClick={() => handleReaction('heart')}
+                  className={`cursor-pointer object-contain`}
                 />
                 <Link href={`/thread/${id}`}>
                   <Image
