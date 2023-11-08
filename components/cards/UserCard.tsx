@@ -11,9 +11,10 @@ interface Props {
   username: string;
   imgUrl: string;
   personType: string;
+  buttonText: string;
 }
 
-function UserCard({ id, name, username, imgUrl, personType }: Props) {
+function UserCard({ id, name, username, imgUrl, personType, buttonText = "View Profile"}: Props) {
   const router = useRouter();
 
   const isCommunity = personType === "Community";
@@ -46,7 +47,7 @@ function UserCard({ id, name, username, imgUrl, personType }: Props) {
             }
           }}
         >
-          View Profile
+          {buttonText}
         </Button>
       </article>
     </div>

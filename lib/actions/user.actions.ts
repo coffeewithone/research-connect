@@ -168,3 +168,21 @@ export async function getActivity(userId: string) {
     throw error;
   }
 }
+
+export async function fetchRecommendedUsers() {
+  try {
+    connectToDB();
+
+    // Create an aggregation pipeline to fetch random users
+    const recommendedUsers = await User.aggregate([
+      //{ $match: { /* Add any filtering criteria here, if needed */ } },
+      { $sample: { size: 5 } }, // Retrieve 5 random users
+      { $project: { id: 1, name: 1, username: 1, image: 1 } }, // Select the fields you want to retrieve
+    ]);
+
+    return recommendedUsers;
+  } catch (error) {
+    console.error("Error fetching recommended users:", error);
+    throw error;
+  }
+}
