@@ -40,6 +40,7 @@ async function Page({ searchParams }: { searchParams: { [key: string]: string | 
                 username={person.username}
                 imgUrl={person.image}
                 personType="User"
+                buttonText="View Profile"
               />
             ))}
           </>

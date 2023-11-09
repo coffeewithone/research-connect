@@ -41,12 +41,6 @@ async function Home({ searchParams }: { searchParams: { [key: string]: string | 
           </>
         )}
       </section>
-
-      <Pagination
-        path="/"
-        pageNumber={searchParams?.page ? +searchParams.page : 1}
-        isNext={result.isNext}
-      />
     </>
   );
 }

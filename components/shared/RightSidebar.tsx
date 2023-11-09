@@ -1,9 +1,9 @@
-'use client'
-import { useEffect, useState } from 'react';
+"use client";
+import { useEffect, useState } from "react";
 import UserCard from "@/components/cards/UserCard";
 import { fetchRecommendedUsers } from "@/lib/actions/user.actions"; // You need to implement this function
-import User from '@/lib/models/user.model';
-import { currentUser} from "@clerk/nextjs"
+import User from "@/lib/models/user.model";
+import { currentUser } from "@clerk/nextjs";
 
 // type User = {
 //   id: string;
@@ -29,15 +29,17 @@ function RightSidebar() {
       <div className="flex flex-1 flex-col justify-start">
         <h3 className="text-heading4-small text-slate-500">Recommended Users to connect</h3>
         {recommendedUsers.map((user) => (
-          <UserCard
-            key={user.id}
-            id={user.id}
-            name={user.name}
-            username={user.username}
-            imgUrl={user.image}
-            personType="User"
-            buttonText="Connect" // Add a button with "Connect" text
-          />
+          <div>
+            <UserCard
+              key={user.id}
+              id={user.id}
+              name={user.name}
+              username={user.username}
+              imgUrl={user.image}
+              personType="User"
+              buttonText="Connect" // Add a button with "Connect" text
+            />
+          </div>
         ))}
       </div>
       <div className="flex flex-1 flex-col justify-start"></div>A CS 316 Project
