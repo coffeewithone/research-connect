@@ -7,9 +7,11 @@ import ThreadCard from "@/components/cards/ThreadCard";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchThreadById } from "@/lib/actions/thread.actions";
 
+import Pagination from "@/components/shared/Pagination";
+
 export const revalidate = 0;
 
-async function page({ params }: { params: { id: string } }) {
+async function page({ params }: { params: { id: string, page: number } }) {
   if (!params.id) return null;
 
   const user = await currentUser();
@@ -44,23 +46,33 @@ async function page({ params }: { params: { id: string } }) {
       </div>
 
       <div className="mt-10">
-        {thread.children.map((childItem: any) => (
-          <ThreadCard
-            key={childItem._id}
-            id={childItem._id}
-            currentUserId={user.id}
-            parentId={childItem.parentId}
-            content={childItem.text}
-            author={childItem.author}
-            community={childItem.community}
-            createdAt={childItem.createdAt}
-            comments={childItem.children}
-            isComment
-          />
-        ))}
-      </div>
+        {thread.children.length == 0? (
+          <p className="no-result">No posts found</p>) : (
+            <div className="mt-10">
+              {thread.children.map((childItem: any) => (
+            <ThreadCard
+              key={childItem._id}
+              id={childItem._id}
+              currentUserId={user.id}
+              parentId={childItem.parentId}
+              content={childItem.text}
+              author={childItem.author}
+              community={childItem.community}
+              createdAt={childItem.createdAt}
+              comments={childItem.children}
+              isComment
+            />
+          ))}</div>
+          )}
+        <Pagination 
+          path="/"
+          pageNumber={params.page ? params.page : 1}
+          isNext={thread.isNext}
+        />
+        </div>
     </section>
   );
 }
+
 
 export default page;
