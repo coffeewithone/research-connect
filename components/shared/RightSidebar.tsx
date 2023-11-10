@@ -13,7 +13,7 @@ import { currentUser } from "@clerk/nextjs";
 // };
 
 function RightSidebar() {
-  const [recommendedUsers, setRecommendedUsers] = useState([]);
+  const [recommendedUsers, setRecommendedUsers] = useState<InstanceType<typeof User>[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
