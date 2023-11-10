@@ -29,7 +29,7 @@ function RightSidebar() {
       <div className="flex flex-1 flex-col justify-start">
         <h3 className="text-heading4-small text-slate-500">Recommended Users to connect</h3>
         {recommendedUsers.map((user) => (
-          <div>
+          <div className="pb-3">
             <UserCard
               key={user.id}
               id={user.id}
