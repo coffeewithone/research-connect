@@ -8,7 +8,7 @@ function TopBar() {
         href="/"
         className="flex items-center gap-4"
       >
-        <h6>Research</h6>
+        <h6>Research Connect</h6>
       </Link>
 
       <div className="flex items-center gap-1">
