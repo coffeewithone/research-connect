@@ -18,7 +18,7 @@ async function Page({ params }: { params: { id: string } }) {
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   return (
-    <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-20">
+    <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 ">
       <section>
         <ProfileHeader
           accountId={userInfo.id}

@@ -37,7 +37,7 @@ function RightSidebar() {
               username={user.username}
               imgUrl={user.image}
               personType="User"
-              buttonText="Connect" // Add a button with "Connect" text
+              buttonText="See Profile" // Add a button with "Connect" text
             />
           </div>
         ))}
