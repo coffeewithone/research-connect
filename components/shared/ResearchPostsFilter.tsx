@@ -7,7 +7,7 @@ const tabs = [
   { name: "Biology", href: "/communities/org_2WKkMK2nfJZyMS1dV7wlVE0ZRCo", current: false },
   { name: "Mathematics", href: "/communities/org_2WS74z9KKUPSgQAxH3WQ6qh9feY", current: false },
   { name: "Physics", href: "/communities/org_2ZJJKW87UKY3zu9A05C6ufCz2yS", current: false },
-  { name: "Others", href: "#", current: false },
+  { name: "Others", href: "/communities", current: false },
 ];
 
 function classNames(...classes: any) {
