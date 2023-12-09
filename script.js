@@ -11,9 +11,9 @@ async function run() {
     const database = client.db("test");
     const threads = database.collection("threads");
 
-    // Generate 2 new posts
+    // Generate 5000 new posts
     let newPosts = [];
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 5001; i++) {
       newPosts.push({
         text: `Computer Research article Post #${i}`, // Replace this with actual content if needed
         //Zaid Muqsit profile
