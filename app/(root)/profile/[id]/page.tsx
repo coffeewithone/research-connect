@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser, UserProfile } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 import { profileTabs } from "@/constants";
@@ -18,7 +18,7 @@ async function Page({ params }: { params: { id: string } }) {
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   return (
-    <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-20">
+    <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 ">
       <section>
         <ProfileHeader
           accountId={userInfo.id}
@@ -28,6 +28,8 @@ async function Page({ params }: { params: { id: string } }) {
           imgUrl={userInfo.image}
           bio={userInfo.bio}
         />
+
+        {user.id === userInfo.id && <UserProfile />}
 
         <div className="mt-9">
           <Tabs

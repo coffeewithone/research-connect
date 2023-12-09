@@ -18,7 +18,7 @@ async function Page({ searchParams }: { searchParams: { [key: string]: string | 
     userId: user.id,
     searchString: searchParams.q,
     pageNumber: searchParams?.page ? +searchParams.page : 1,
-    pageSize: 25,
+    pageSize: 10,
   });
 
   return (

@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
-import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 interface Props {
   id: string;
@@ -19,25 +18,30 @@ function UserCard({ id, name, username, imgUrl, personType }: Props) {
   const isCommunity = personType === "Community";
 
   return (
-    <div className="flex">
-      <article className="user-card">
-        <div className="user-card_avatar">
-          <div className="relative h-12 w-12">
-            <Image
-              src={imgUrl}
-              alt="user_logo"
-              fill
-              className="rounded-full object-cover"
-            />
+    <button
+      onClick={() => {
+        router.push(`/profile/${id}`);
+      }}
+    >
+      <div className="flex">
+        <article className="user-card">
+          <div className="user-card_avatar">
+            <div className="relative h-12 w-12">
+              <Image
+                src={imgUrl}
+                alt="user_logo"
+                fill
+                className="rounded-full object-cover"
+              />
+            </div>
+
+            <div className="flex-1 text-ellipsis">
+              <h4 className="text-base-semibold">{name}</h4>
+              <p className="text-small-medium ">@{username}</p>
+            </div>
           </div>
 
-          <div className="flex-1 text-ellipsis">
-            <h4 className="text-base-semibold">{name}</h4>
-            <p className="text-small-medium ">@{username}</p>
-          </div>
-        </div>
-
-        <Button
+          {/* <Button
           onClick={() => {
             if (isCommunity) {
               router.push(`/communities/${id}`);
@@ -46,10 +50,11 @@ function UserCard({ id, name, username, imgUrl, personType }: Props) {
             }
           }}
         >
-          View Profile
-        </Button>
-      </article>
-    </div>
+
+        </Button> */}
+        </article>
+      </div>
+    </button>
   );
 }
 

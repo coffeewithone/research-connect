@@ -53,9 +53,10 @@ interface Params {
   author: string;
   communityId: string | null;
   path: string;
+  fileUrl: string;
 }
 
-export async function createThread({ text, author, communityId, path }: Params) {
+export async function createThread({ text, author, communityId, path, fileUrl }: Params) {
   try {
     connectToDB();
 
@@ -65,6 +66,7 @@ export async function createThread({ text, author, communityId, path }: Params) 
       text,
       author,
       community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
+      fileUrl,
     });
 
     // Update User model

@@ -14,7 +14,7 @@ function Searchbar({ routeType }: Props) {
   const router = useRouter();
   const [search, setSearch] = useState("");
 
-  // query after 0.3s of no input
+  // query after 0.1s of no input
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (search) {
@@ -40,7 +40,7 @@ function Searchbar({ routeType }: Props) {
         id="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder={`${routeType !== "/search" ? "Search communities" : "Search researcher"}`}
+        placeholder={`${routeType !== "/search" ? "Search " : "Search "}`}
         className="no-focus searchbar_input"
       />
     </div>
