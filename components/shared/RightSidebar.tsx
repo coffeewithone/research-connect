@@ -5,13 +5,6 @@ import { fetchRecommendedUsers } from "@/lib/actions/user.actions"; // You need 
 import User from "@/lib/models/user.model";
 import { currentUser } from "@clerk/nextjs";
 
-// type User = {
-//   id: string;
-//   name: string;
-//   username: string;
-//   image: string;
-// };
-
 function RightSidebar() {
   const [recommendedUsers, setRecommendedUsers] = useState<InstanceType<typeof User>[]>([]);
 
@@ -28,8 +21,9 @@ function RightSidebar() {
     <section className="custom-scrollbar rightsidebar">
       <div className="flex flex-1 flex-col justify-start">
         <h3 className="text-heading4-small text-slate-500">Recommended Users to connect</h3>
+
         {recommendedUsers.map((user) => (
-          <div className="pb-3">
+          <div className="pb-5  border ml-2 pl-2 pr-5 mb-2 mt-2 pt-2 rounded-md">
             <UserCard
               key={user.id}
               id={user.id}
@@ -37,7 +31,6 @@ function RightSidebar() {
               username={user.username}
               imgUrl={user.image}
               personType="User"
-              buttonText="See Profile" // Add a button with "Connect" text
             />
           </div>
         ))}
@@ -48,19 +41,3 @@ function RightSidebar() {
 }
 
 export default RightSidebar;
-
-// function RightSidebar() {
-//   return (
-//     <section className="custom-scrollbar rightsidebar">
-//       <div className="flex flex-1 flex-col justify-start">
-//         <h3 className="text-heading4-small text-slate-500">Recommended Communities</h3>
-//       </div>
-//       <div className="flex flex-1 flex-col justify-start">
-//         <h3 className="text-heading4-small text-slate-500">Recommended Users</h3>
-//       </div>
-//       RightSidebar
-//     </section>
-//   );
-// }
-
-// export default RightSidebar;

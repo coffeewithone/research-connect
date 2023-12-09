@@ -3,6 +3,7 @@ const tabs = [
   { name: "Biology", href: "#", current: false },
   { name: "Mathematics", href: "#", current: false },
   { name: "Physics", href: "#", current: false },
+  { name: "Others", href: "#", current: false },
 ];
 
 function classNames(...classes: any) {
@@ -12,7 +13,7 @@ function classNames(...classes: any) {
 export default function ResearchPostsFilter() {
   return (
     <div>
-      <div className="sm:hidden">
+      <div className="sm:hidden mt-30 pt-30">
         <label
           htmlFor="tabs"
           className="sr-only"
@@ -33,7 +34,7 @@ export default function ResearchPostsFilter() {
       </div>
       <div className="hidden sm:block">
         <nav
-          className="isolate flex divide-x divide-gray-200 rounded-lg shadow"
+          className="mt-30 pt-30 isolate flex divide-x divide-gray-200 rounded-lg shadow"
           aria-label="Tabs"
         >
           {tabs.map((tab, tabIdx) => (

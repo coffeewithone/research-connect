@@ -8,6 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Home from "./page";
 import LoginModal from "@/components/shared/LoginModal";
 import ResearchPostsFilter from "@/components/shared/ResearchPostsFilter";
+import RightSidebarProfileCard from "@/components/shared/RightSidebarProfileCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html lang="en">
         <body className={inter.className}>
           <TopBar />
-          <ResearchPostsFilter />
-
+          <div className="mt-16">
+            <ResearchPostsFilter />
+          </div>
           <main className="flex flex-row">
             <LeftSidebar />
             <section className="main-container">
@@ -35,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* @ts-ignore */}
 
             <RightSidebar />
+            {/* <RightSidebarProfileCard /> */}
           </main>
 
           {/* <BottomBar /> */}

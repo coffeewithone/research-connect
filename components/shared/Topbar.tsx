@@ -1,6 +1,5 @@
 import { OrganizationSwitcher, SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
-import ResearchPostsFilter from "./ResearchPostsFilter";
 
 function TopBar() {
   return (
@@ -31,7 +30,6 @@ function TopBar() {
           </SignedOut>
         </div>
       </nav>
-      <ResearchPostsFilter />
     </>
   );
 }
