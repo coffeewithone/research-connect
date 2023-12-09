@@ -1,5 +1,5 @@
 "use client";
-import { currentUser, UserProfile } from "@clerk/nextjs";
+import { UserProfile, currentUser } from "@clerk/nextjs";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -14,7 +14,7 @@ interface Props {
   type?: string;
 }
 
-function ProfileHeader({ accountId, authUserId, name, username, imgUrl, bio, type }: Props) {
+async function ProfileHeader({ accountId, authUserId, name, username, imgUrl, bio, type }: Props) {
   const [editMode, setEditMode] = useState(false);
   const [editedBio, setEditedBio] = useState(bio);
 
@@ -46,7 +46,6 @@ function ProfileHeader({ accountId, authUserId, name, username, imgUrl, bio, typ
           </div>
         </div>
       </div>
-      <UserProfile />
     </div>
   );
 }

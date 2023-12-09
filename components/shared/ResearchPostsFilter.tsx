@@ -3,10 +3,10 @@
 import { useRouter } from "next/navigation";
 
 const tabs = [
-  { name: "Computer Science", href: "#", current: true },
-  { name: "Biology", href: "#", current: false },
-  { name: "Mathematics", href: "#", current: false },
-  { name: "Physics", href: "#", current: false },
+  { name: "Computer Science", href: "/communities/org_2ZJJG3LoEb917YXI7Qd2jXDoC5V", current: true },
+  { name: "Biology", href: "/communities/org_2WKkMK2nfJZyMS1dV7wlVE0ZRCo", current: false },
+  { name: "Mathematics", href: "/communities/org_2WS74z9KKUPSgQAxH3WQ6qh9feY", current: false },
+  { name: "Physics", href: "/communities/org_2ZJJKW87UKY3zu9A05C6ufCz2yS", current: false },
   { name: "Others", href: "#", current: false },
 ];
 
@@ -36,7 +36,7 @@ export default function ResearchPostsFilter() {
         <select
           id="tabs"
           name="tabs"
-          className="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+          className="block w-full rounded-md border-gray-300 "
           defaultValue={tabs.find((tab) => tab.current)?.name || ""}
           onChange={handleTabChange}
         >
@@ -66,7 +66,7 @@ export default function ResearchPostsFilter() {
               <span
                 aria-hidden="true"
                 className={classNames(
-                  tab.current ? "bg-indigo-500" : "bg-transparent",
+                  tab.current ? "bg-transparent" : "bg-transparent",
                   "absolute inset-x-0 bottom-0 h-0.5"
                 )}
               />

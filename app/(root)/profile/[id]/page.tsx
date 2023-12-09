@@ -29,6 +29,8 @@ async function Page({ params }: { params: { id: string } }) {
           bio={userInfo.bio}
         />
 
+        {user.id === userInfo.id && <UserProfile />}
+
         <div className="mt-9">
           <Tabs
             defaultValue="threads"

@@ -60,7 +60,7 @@ async function Page({ params }: { params: { id: string } }) {
 
           <TabsContent
             value="threads"
-            className="w-full text-light-1"
+            className="w-full text-black"
           >
             {/* @ts-ignore */}
             <ThreadsTab
