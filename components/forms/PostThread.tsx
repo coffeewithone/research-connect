@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { ThreadValidation } from "@/lib/validations/thread";
 import { createThread } from "@/lib/actions/thread.actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   userId: string;
@@ -37,15 +37,21 @@ function PostThread({ userId }: Props) {
       accountId: userId,
     },
   });
+  useEffect(() => {
+    console.log("Current file URL state: ", fileUrl);
+  }, [fileUrl]);
 
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
-    await createThread({
+    const threadData = {
       text: values.thread,
       author: userId,
       communityId: organization ? organization.id : null,
       path: pathname,
-    });
+      fileUrl: fileUrl ? fileUrl : "",
+    };
 
+    console.log("Submitting thread data: ", threadData);
+    await createThread(threadData);
     router.push("/");
   };
 
@@ -81,19 +87,7 @@ function PostThread({ userId }: Props) {
             </FormItem>
           )}
         />
-        {/* <UploadButton
-          className="border bg-slate-300 rounded-md"
-          endpoint="media"
-          onClientUploadComplete={(res) => {
-            // Do something with the response
-            console.log("Files: ", res);
-            alert("Upload Completed");
-          }}
-          onUploadError={(error: Error) => {
-            // Do something with the error.
-            alert(`ERROR! ${error.message}`);
-          }}
-        /> */}
+
         <UploadDropzone<OurFileRouter>
           appearance={{
             button: "p-4 ut-ready:bg-green-500 ut-uploading:cursor-not-allowed e bg-red-500 bg-none after:bg-green-400",
@@ -101,14 +95,17 @@ function PostThread({ userId }: Props) {
           className="  text-blue-300 border-2 border-dashed border-light-3 rounded-lg p-6 cursor-pointer hover:border-primary-500 focus:border-primary-500 transition-all"
           endpoint="media"
           content={uploadDropzoneContent}
-          // Add this line to accept only PDF files
-          onClientUploadComplete={(res: any) => {
+          // Add this line to accept only PDF Files
+          onClientUploadComplete={async (res: any) => {
             console.log("Files: ", res);
-            // Set the file URL and update the upload status
-            setFileUrl(res.url); // Assuming 'res.url' contains the URL of the uploaded file
+            const uploadedFileUrl = res[0].fileUrl;
+            setFileUrl(uploadedFileUrl);
+            console.log("Uploaded file URL: ", res[0].fileUrl);
+
             setUploadStatus("success");
-            console.log("Files: ", res);
-            alert("Upload Completed");
+            alert(`Upload Completed. File URL: ${uploadedFileUrl}`);
+
+            // Call createThread directly with the uploaded file URL
           }}
           onUploadError={(error: Error) => {
             setUploadStatus("error");
@@ -119,6 +116,18 @@ function PostThread({ userId }: Props) {
             console.log("Uploading...");
           }}
         />
+        {uploadStatus === "success" && fileUrl && (
+          <div className="mb-4 p-2 bg-gray-100 border border-gray-300 rounded">
+            <p>Uploaded PDF:</p>
+            <a
+              href={fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {fileUrl}
+            </a>
+          </div>
+        )}
         <Button type="submit">Publish</Button>
       </form>
     </Form>

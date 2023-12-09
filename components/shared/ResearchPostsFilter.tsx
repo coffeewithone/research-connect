@@ -1,3 +1,7 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 const tabs = [
   { name: "Computer Science", href: "#", current: true },
   { name: "Biology", href: "#", current: false },
@@ -11,6 +15,14 @@ function classNames(...classes: any) {
 }
 
 export default function ResearchPostsFilter() {
+  const router = useRouter();
+
+  // Handler for when a new tab is selected
+  const handleTabChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCategory = event.target.value;
+    // Redirect to the search page with the selected category as a query parameter
+    router.push(`/search?category=${selectedCategory}`);
+  };
   return (
     <div>
       <div className="sm:hidden mt-30 pt-30">
@@ -26,6 +38,7 @@ export default function ResearchPostsFilter() {
           name="tabs"
           className="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
           defaultValue={tabs.find((tab) => tab.current)?.name || ""}
+          onChange={handleTabChange}
         >
           {tabs.map((tab) => (
             <option key={tab.name}>{tab.name}</option>
