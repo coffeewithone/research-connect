@@ -1,5 +1,9 @@
 # Research Connect
 
+## Video Demo
+
+The final video can be viewed [here](https://www.youtube.com/watch?v=icNYEdlQWSU). 
+
 ## Overview
 
 Research Connect is a collaborative platform tailored for the research community, facilitating interaction and engagement through a range of dynamic features. Engineered with MongoDB, TypeScript, NodeJS, NextJS, and ReactJS, it aims to deliver a seamless user experience and foster academic and professional connections.
